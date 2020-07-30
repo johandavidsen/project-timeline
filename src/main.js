@@ -1,8 +1,11 @@
 import Vue from 'vue'
-import App from './App.vue'
+import Timeline from './components/Timeline'
 
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  el: "#project-timeline-demo",
+  components: {
+    Timeline
+  },
+})
