@@ -1,7 +1,7 @@
 {
   "name": "project-timeline",
   "version": "0.1.0",
-  "main": "./dist/project-timeline.js",
+  "main": "./dist/project-timeline.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name project-timeline ./src/components/Timeline.vue",
