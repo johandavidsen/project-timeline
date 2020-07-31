@@ -68,7 +68,7 @@
         background: white;
         border-radius: 15px;
         position: absolute;
-        top: -9px;
+        top: -7px;
         border: 2px solid $primary;
         cursor: pointer;
         z-index: 1;
@@ -76,13 +76,13 @@
 
     .circle:before {
         content: '';
-        width: 9px;
-        height: 9px;
+        width: 7px;
+        height: 7px;
         background: $primary;
         position: absolute;
         border-radius: 100%;
-        top: 3px;
-        left: 3px;
+        top: 2px;
+        left: 2px;
         display: none;
     }
 
