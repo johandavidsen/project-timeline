@@ -4,7 +4,7 @@
   "main": "./dist/project-timeline.js",
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target wc --name project-timeline ./src/components/Timeline.vue",
+    "build": "vue-cli-service build --target lib --name project-timeline ./src/components/Timeline.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

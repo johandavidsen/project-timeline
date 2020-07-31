@@ -1,8 +1,19 @@
 <meta charset="utf-8">
 <title>project-timeline demo</title>
 <script src="https://unpkg.com/vue"></script>
-<script src="./project-timeline.js"></script>
+<script src="./project-timeline.umd.js"></script>
+
+<link rel="stylesheet" href="./project-timeline.css">
 
 
-<project-timeline></project-timeline>
+<div id="app">
+  <demo></demo>
+</div>
 
+<script>
+new Vue({
+  components: {
+    demo: project-timeline
+  }
+}).$mount('#app')
+</script>
