@@ -15,15 +15,13 @@
                   <p v-bind:style="'margin-left:' + textMargin + ';'" class="primary">{{ year }}</p>
                 </div>
                 <div class="progressed-time" v-bind:style="{ width: time + '%' }"></div>
-                <div v-bind:style="{ width: time + '%' }" class="airplane">
-                    <font-awesome-icon icon="plane" size="2x"/>
-                </div>
-                <div v-bind:key="`m-${mkey}`"
-                     v-for="({ date, marker }, mkey) in markers"
-                     class="circle"
-                     v-bind:data-date="date"
-                     v-bind:style="{ left:  marker + '%'}"
-                     v-on:click="_click"></div>
+                <i class="fas fa-plane airplane fa-2x" v-bind:style="{ width: time + '%' }"></i>
+                <Event v-bind:key="`m-${mkey}`"
+                        v-for="({ date, marker }, mkey) in markers"
+                        v-bind:data-event="markers.find(entry => entry.date === date)"
+                        v-bind:style="{ left:  marker + '%'}"
+                        >
+                </Event>
             </div>
         </div>
         <div ref="project-content" class="project-content">
@@ -33,11 +31,7 @@
 </template>
 
 <script>
-  import { library } from '@fortawesome/fontawesome-svg-core'
-  import { faPlane } from '@fortawesome/free-solid-svg-icons'
-  import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-
-  library.add(faPlane)
+  import Event from "@/components/Event"
 
   export default {
     name: 'Timeline',
@@ -118,38 +112,6 @@
 
     methods: {
 
-      _click ({ currentTarget}) {
-        let date = currentTarget.dataset.date
-        let item = this.markers.find(entry => entry.date === date)
-        let dynamic = []
-
-        if (item.entries) {
-          for (let i = 0; i < item.entries.length; i++) {
-            dynamic.push(item.entries[i])
-          }
-        }
-
-        let options = {
-          dynamic: true,
-          dynamicEl: dynamic,
-          hash: false
-        }
-
-        // Destroy previous selector if found
-        // eslint-disable-next-line no-undef
-        if ($(this.$refs["project-content"]).data('lightGallery')) {
-            // eslint-disable-next-line no-undef
-            $(this.$refs["project-content"]).data('lightGallery').destroy(true);
-        }
-
-        // eslint-disable-next-line no-undef
-        let target = $(this.$refs["project-content"])
-        setTimeout(function()
-        {
-          target.lightGallery(options);
-        }, 250);
-      },
-
       _mapMarkers (entries) {
         let self = this
 
@@ -208,9 +170,9 @@
       }
     },
 
-    components: [
-      FontAwesomeIcon
-    ]
+    components: {
+      Event
+    }
   }
 </script>
 
@@ -276,42 +238,6 @@
         top: 50%;
         transform: translateY(-50%);
         position: absolute;
-    }
-
-    .circle {
-        width: 15px;
-        height: 15px;
-        background: white;
-        border-radius: 15px;
-        position: absolute;
-        top: -9px;
-        border: 2px solid $primary;
-        cursor: pointer;
-        z-index: 1;
-    }
-
-    .circle:before {
-        content: '';
-        width: 7px;
-        height: 7px;
-        background: $primary;
-        position: absolute;
-        border-radius: 100%;
-        top: 2px;
-        left: 2px;
-        display: none;
-    }
-
-    .circle.hover:before, .circle.active:before {
-        display: block;
-    }
-
-    .circle.hover .popupSpan, .circle.active .popupSpan {
-        display: block;
-    }
-
-    .circle.active .popupSpan {
-        top: -40px;
     }
 
     .airplane {

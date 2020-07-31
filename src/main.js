@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Timeline from './components/Timeline'
+import Timeline from '@/components/Timeline'
 
 Vue.config.productionTip = false
 
