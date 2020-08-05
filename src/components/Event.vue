@@ -37,13 +37,10 @@
         }
 
         // Destroy previous selector if found
-        // eslint-disable-next-line no-undef
         if ($(this).data('lightGallery')) {
-          // eslint-disable-next-line no-undef
           $(this).data('lightGallery').destroy(true);
         }
 
-        // eslint-disable-next-line no-undef
         let target = $(this)
         setTimeout(function()
         {
@@ -52,7 +49,6 @@
       },
 
       _toggleHover() {
-
         this.hover = !this.hover
       }
     }
