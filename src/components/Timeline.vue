@@ -14,10 +14,10 @@
                      v-bind:style="{ left: yearGap + '%' }">
                   <p v-bind:style="'margin-left:' + textMargin + ';'" class="primary">{{ year }}</p>
                 </div>
-                <div class="progressed-time" v-bind:style="{ width: time + '%' }"></div>
-                <i class="fas fa-plane airplane fa-2x" v-bind:style="{ width: time + '%' }"></i>
+                <div class="progressed-time" v-bind:style="{ width: time + 1 + '%' }"></div>
+                <i v-if="time > 0" class="fas fa-plane airplane fa-2x" v-bind:style="{ left: time + '%' }"></i>
                 <Event v-bind:key="`m-${mkey}`"
-                        v-for="({ date, marker }, mkey) in markers"
+                        v-for="({ date, marker }, mkey) in relevantEvents"
                         v-bind:data-event="markers.find(entry => entry.date === date)"
                         v-bind:style="{ left:  marker + '%'}"
                         >
@@ -103,6 +103,10 @@
         time: time,
         markers: []
       }
+    },
+
+    computed: {
+      relevantEvents: function () { return this.markers.filter((m) => m.marker > 0) }
     },
 
     mounted() {
@@ -243,7 +247,6 @@
     .airplane {
         position: absolute;
         top: -15px;
-        left: 56%;
     }
 </style>
 
