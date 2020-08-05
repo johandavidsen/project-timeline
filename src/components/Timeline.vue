@@ -14,8 +14,8 @@
                      v-bind:style="{ left: yearGap + '%' }">
                   <p v-bind:style="'margin-left:' + textMargin + ';'" class="primary">{{ year }}</p>
                 </div>
-                <div class="progressed-time" v-bind:style="{ width: time + 1 + '%' }"></div>
-                <i v-if="time > 0" class="fas fa-plane airplane fa-2x" v-bind:style="{ left: time + '%' }"></i>
+                <div class="progressed-time" v-bind:style="{ width: progressedTimeline + '%' }"></div>
+                <i v-if="progressedTimeline > 0" class="fas fa-plane airplane fa-2x" v-bind:style="{ left: time + '%' }"></i>
                 <Event v-bind:key="`m-${mkey}`"
                         v-for="({ date, marker }, mkey) in relevantEvents"
                         v-bind:data-event="markers.find(entry => entry.date === date)"
@@ -46,8 +46,8 @@
       const currentYear = currentDate.getFullYear()
       const currentMonth = currentDate.getMonth()
       const currentDay = currentDate.getDate()
-      let startYear = dataStartDate.split('-')[2]
-      let endYear = dataEndDate.split('-')[2]
+      let startYear = Number(dataStartDate.split('-')[2])
+      let endYear = Number(dataEndDate.split('-')[2])
       let years = []
       let progressedTime = []
       let time = 0
@@ -57,7 +57,7 @@
       }
       // Get all years
       while (startYear <= endYear) {
-        years.push({year: startYear})
+        years.push({ year: startYear })
         startYear++
       }
 
@@ -106,7 +106,8 @@
     },
 
     computed: {
-      relevantEvents: function () { return this.markers.filter((m) => m.marker > 0) }
+      relevantEvents: function () { return this.markers.filter((m) => m.marker > 0) },
+      progressedTimeline: function () { if (this.time > 0) { return this.time + 1 } return this.time }
     },
 
     mounted() {

@@ -1,5 +1,8 @@
 # project-timeline
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/johandavidsen/project-timeline?style=flat-square)
+
+
 ## Project Installation
 Assumption is that [VueJS](), [jQuery]() and [lightGallery]() are available in the
 global space.
