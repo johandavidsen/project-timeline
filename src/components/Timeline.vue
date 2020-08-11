@@ -140,9 +140,9 @@
       _calcMarkerDate (entry) {
         const gap = 100 / (this.years.length - 1);
         const day = gap / 360
-        let thisYear = parseInt(entry.dataset.date.split('/')[2])
-        let thisMonth = parseInt(entry.dataset.date.split('/')[0])
-        let thisDay = parseInt(entry.dataset.date.split('/')[1])
+        let thisYear = parseInt(entry.dataset.date.split('-')[2])
+        let thisMonth = parseInt(entry.dataset.date.split('-')[1])
+        let thisDay = parseInt(entry.dataset.date.split('-')[0])
 
         let days = ((thisMonth * 30) + thisDay) * day
         return ((thisYear - this.years[0].year) * gap) + days
