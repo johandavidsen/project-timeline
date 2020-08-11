@@ -168,7 +168,7 @@
         }
 
         if (entry.textContent !== undefined && entry.textContent.length !== 0) {
-          r.caption = entry.textContent
+          r.subHtml = entry.innerHTML
         }
 
         return r
