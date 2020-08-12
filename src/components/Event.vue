@@ -29,7 +29,7 @@
             dynamic.push(this.dataEvent.entries[i])
           }
         }
-        console.log(dynamic)
+
         let options = {
           dynamic: true,
           dynamicEl: dynamic,

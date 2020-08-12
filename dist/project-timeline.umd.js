@@ -3120,12 +3120,12 @@ var es_string_iterator = __webpack_require__("3ca3");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__("1276");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Event.vue?vue&type=template&id=582fbbaa&
-var Eventvue_type_template_id_582fbbaa_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"circle",class:{ active: _vm.hover },on:{"mouseover":_vm._toggleHover,"mouseleave":_vm._toggleHover,"click":_vm._click}})}
-var Eventvue_type_template_id_582fbbaa_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Event.vue?vue&type=template&id=871f7274&
+var Eventvue_type_template_id_871f7274_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"circle",class:{ active: _vm.hover },on:{"mouseover":_vm._toggleHover,"mouseleave":_vm._toggleHover,"click":_vm._click}})}
+var Eventvue_type_template_id_871f7274_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Event.vue?vue&type=template&id=582fbbaa&
+// CONCATENATED MODULE: ./src/components/Event.vue?vue&type=template&id=871f7274&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
 var es_array_iterator = __webpack_require__("e260");
@@ -3166,7 +3166,6 @@ var web_dom_collections_iterator = __webpack_require__("ddb0");
         }
       }
 
-      console.log(dynamic);
       var options = {
         dynamic: true,
         dynamicEl: dynamic,
@@ -3303,8 +3302,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_Eventvue_type_script_lang_js_,
-  Eventvue_type_template_id_582fbbaa_render,
-  Eventvue_type_template_id_582fbbaa_staticRenderFns,
+  Eventvue_type_template_id_871f7274_render,
+  Eventvue_type_template_id_871f7274_staticRenderFns,
   false,
   null,
   null,
