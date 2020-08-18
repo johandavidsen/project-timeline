@@ -7,6 +7,7 @@
 </template>
 
 <script>
+
   export default {
     name: "Event",
 
@@ -23,6 +24,8 @@
     methods: {
 
       _click () {
+
+        let self = this
         let dynamic = []
         if (this.dataEvent.entries) {
           for (let i = 0; i < this.dataEvent.entries.length; i++) {
@@ -36,8 +39,21 @@
           hash: false
         }
 
+        import(/* webpackChunkName: "lightGallery" */ "lightgallery.js").then(() => {
+          require(["lg-thumbnail.js",
+            "lg-autoplay.js",
+            "lg-video.js",
+            "lg-fullscreen.js",
+            "lg-pager.js",
+            "lg-zoom.js"], function () {
+            // eslint-disable-next-line no-undef
+            lightGallery(self.$el, options)
+
+          })
+        });
+
         // Destroy previous selector if found
-        if ($(this).data('lightGallery')) {
+        /*if ($(this).data('lightGallery')) {
           $(this).data('lightGallery').destroy(true);
         }
 
@@ -45,7 +61,7 @@
         setTimeout(function()
         {
           target.lightGallery(options);
-        }, 250);
+        }, 250);*/
       },
 
       _toggleHover() {
