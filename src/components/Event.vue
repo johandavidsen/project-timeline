@@ -3,7 +3,8 @@
          v-on:mouseover="_toggleHover"
          v-on:mouseleave="_toggleHover"
          v-bind:class="{ active: hover }"
-         v-on:click="_click"></div>
+         v-on:click="_click">
+    </div>
 </template>
 
 <script>
@@ -17,7 +18,9 @@
 
     data () {
       return {
-        hover: false
+        hover: false,
+        link: null,
+        target: null
       }
     },
 
@@ -25,43 +28,46 @@
 
       _click () {
 
-        let self = this
+        //let self = this
         let dynamic = []
         if (this.dataEvent.entries) {
-          for (let i = 0; i < this.dataEvent.entries.length; i++) {
-            dynamic.push(this.dataEvent.entries[i])
+
+          //  if images
+          for(let i = 0; i < this.dataEvent.entries.length; i++) {
+            let entry = this.dataEvent.entries[i]
+
+            if (entry.link) {
+
+              if (entry.target) {
+                window.open(entry.link, entry.target)
+              } else {
+                window.location = entry.link
+              }
+              return
+            }
+
+            if (entry.src) {
+              dynamic.push(entry)
+            }
           }
+
+          let options = {
+            dynamic: true,
+            dynamicEl: dynamic,
+            hash: false
+          }
+
+          // Destroy previous selector if found
+          if ($(this).data('lightGallery')) {
+            $(this).data('lightGallery').destroy(true);
+          }
+
+          let target = $(this)
+          setTimeout(function()
+          {
+            target.lightGallery(options);
+          }, 250);
         }
-
-        let options = {
-          dynamic: true,
-          dynamicEl: dynamic,
-          hash: false
-        }
-
-        import(/* webpackChunkName: "lightGallery" */ "lightgallery.js").then(() => {
-          require(["lg-thumbnail.js",
-            "lg-autoplay.js",
-            "lg-video.js",
-            "lg-fullscreen.js",
-            "lg-pager.js",
-            "lg-zoom.js"], function () {
-            // eslint-disable-next-line no-undef
-            lightGallery(self.$el, options)
-
-          })
-        });
-
-        // Destroy previous selector if found
-        /*if ($(this).data('lightGallery')) {
-          $(this).data('lightGallery').destroy(true);
-        }
-
-        let target = $(this)
-        setTimeout(function()
-        {
-          target.lightGallery(options);
-        }, 250);*/
       },
 
       _toggleHover() {

@@ -63,7 +63,7 @@
 
       // Get the width of the year
       const gap = 100 / (years.length - 1);
-      const day = gap / 360
+      const day = gap / 365
 
       years.forEach((year, index) => {
         // Build timeline
@@ -72,7 +72,7 @@
           year.textMargin = '0px'
         }
 
-        if (index > 0) {
+        if (index >= 0) {
           year.yearGap = gap * index
           year.textMargin = '-17px'
         }
@@ -139,7 +139,8 @@
 
       _calcMarkerDate (entry) {
         const gap = 100 / (this.years.length - 1);
-        const day = gap / 360
+        const day = gap / 365
+
         let thisYear = parseInt(entry.dataset.date.split('-')[2])
         let thisMonth = parseInt(entry.dataset.date.split('-')[1])
         let thisDay = parseInt(entry.dataset.date.split('-')[0])
@@ -149,7 +150,7 @@
       },
 
       _removeInvalidDiv (entry) {
-        return entry.dataset.src
+        return entry.dataset.src || entry.dataset.link
       },
 
       _divToObject (entry) {
@@ -169,6 +170,14 @@
 
         if (entry.textContent !== undefined && entry.textContent.length !== 0) {
           r.subHtml = entry.innerHTML
+        }
+
+        if (entry.dataset.link !== undefined) {
+          r.link = entry.dataset.link
+        }
+
+        if (entry.dataset.target !== undefined) {
+          r.target = entry.dataset.target
         }
 
         return r
