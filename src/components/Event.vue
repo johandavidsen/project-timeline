@@ -3,10 +3,12 @@
          v-on:mouseover="_toggleHover"
          v-on:mouseleave="_toggleHover"
          v-bind:class="{ active: hover }"
-         v-on:click="_click"></div>
+         v-on:click="_click">
+    </div>
 </template>
 
 <script>
+
   export default {
     name: "Event",
 
@@ -16,36 +18,56 @@
 
     data () {
       return {
-        hover: false
+        hover: false,
+        link: null,
+        target: null
       }
     },
 
     methods: {
 
       _click () {
+
+        //let self = this
         let dynamic = []
         if (this.dataEvent.entries) {
-          for (let i = 0; i < this.dataEvent.entries.length; i++) {
-            dynamic.push(this.dataEvent.entries[i])
+
+          //  if images
+          for(let i = 0; i < this.dataEvent.entries.length; i++) {
+            let entry = this.dataEvent.entries[i]
+
+            if (entry.link) {
+
+              if (entry.target) {
+                window.open(entry.link, entry.target)
+              } else {
+                window.location = entry.link
+              }
+              return
+            }
+
+            if (entry.src) {
+              dynamic.push(entry)
+            }
           }
-        }
 
-        let options = {
-          dynamic: true,
-          dynamicEl: dynamic,
-          hash: false
-        }
+          let options = {
+            dynamic: true,
+            dynamicEl: dynamic,
+            hash: false
+          }
 
-        // Destroy previous selector if found
-        if ($(this).data('lightGallery')) {
-          $(this).data('lightGallery').destroy(true);
-        }
+          // Destroy previous selector if found
+          if ($(this).data('lightGallery')) {
+            $(this).data('lightGallery').destroy(true);
+          }
 
-        let target = $(this)
-        setTimeout(function()
-        {
-          target.lightGallery(options);
-        }, 250);
+          let target = $(this)
+          setTimeout(function()
+          {
+            target.lightGallery(options);
+          }, 250);
+        }
       },
 
       _toggleHover() {
