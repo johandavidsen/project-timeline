@@ -1,9 +1,16 @@
 <template>
     <div class="circle"
+         tabindex="0"
+         data-toggle="tooltip"
+         data-placement="top"
+         v-bind:title="tooltip"
+         v-on:focusin="_toggleHover"
+         v-on:focusout="_toggleHover"
          v-on:mouseover="_toggleHover"
          v-on:mouseleave="_toggleHover"
          v-bind:class="{ active: hover }"
-         v-on:click="_click">
+         v-on:click="_click"
+         ref="h">
     </div>
 </template>
 
@@ -19,8 +26,14 @@
     data () {
       return {
         hover: false,
-        link: null,
-        target: null
+        tooltip: this.dataEvent.tooltip
+      }
+    },
+
+    mounted () {
+      if (this.tooltip) {
+        let target = $(this.$refs.h)
+        target.tooltip()
       }
     },
 

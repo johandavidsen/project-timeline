@@ -3125,7 +3125,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Timeline.vue?vue&type=template&id=1a04f0e8&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Timeline.vue?vue&type=template&id=6a170962&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"project-timeline"},[_c('div',{staticClass:"line-cont"},[_c('div',{staticClass:"line"},[_vm._l((_vm.years),function(ref,tkey){
 var year = ref.year;
 var yearGap = ref.yearGap;
@@ -3141,7 +3141,7 @@ return _c('Event',{key:("m-" + mkey),style:({ left:  marker + '%'}),attrs:{"data
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Timeline.vue?vue&type=template&id=1a04f0e8&
+// CONCATENATED MODULE: ./src/components/Timeline.vue?vue&type=template&id=6a170962&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
@@ -3170,12 +3170,12 @@ var es_string_split = __webpack_require__("1276");
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.link.js
 var es_string_link = __webpack_require__("9911");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Event.vue?vue&type=template&id=b04c0df4&
-var Eventvue_type_template_id_b04c0df4_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"circle",class:{ active: _vm.hover },on:{"mouseover":_vm._toggleHover,"mouseleave":_vm._toggleHover,"click":_vm._click}})}
-var Eventvue_type_template_id_b04c0df4_staticRenderFns = []
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Event.vue?vue&type=template&id=0926a6fe&
+var Eventvue_type_template_id_0926a6fe_render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"h",staticClass:"circle",class:{ active: _vm.hover },attrs:{"tabindex":"0","data-toggle":"tooltip","data-placement":"top","title":_vm.tooltip},on:{"focusin":_vm._toggleHover,"focusout":_vm._toggleHover,"mouseover":_vm._toggleHover,"mouseleave":_vm._toggleHover,"click":_vm._click}})}
+var Eventvue_type_template_id_0926a6fe_staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Event.vue?vue&type=template&id=b04c0df4&
+// CONCATENATED MODULE: ./src/components/Event.vue?vue&type=template&id=0926a6fe&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
 var es_array_iterator = __webpack_require__("e260");
@@ -3200,15 +3200,27 @@ var web_dom_collections_iterator = __webpack_require__("ddb0");
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ var Eventvue_type_script_lang_js_ = ({
   name: "Event",
   props: ['dataEvent'],
   data: function data() {
     return {
       hover: false,
-      link: null,
-      target: null
+      tooltip: this.dataEvent.tooltip
     };
+  },
+  mounted: function mounted() {
+    if (this.tooltip) {
+      var target = $(this.$refs.h);
+      target.tooltip();
+    }
   },
   methods: {
     _click: function _click() {
@@ -3372,8 +3384,8 @@ function normalizeComponent (
 
 var component = normalizeComponent(
   components_Eventvue_type_script_lang_js_,
-  Eventvue_type_template_id_b04c0df4_render,
-  Eventvue_type_template_id_b04c0df4_staticRenderFns,
+  Eventvue_type_template_id_0926a6fe_render,
+  Eventvue_type_template_id_0926a6fe_staticRenderFns,
   false,
   null,
   null,
@@ -3527,6 +3539,7 @@ var component = normalizeComponent(
           });
           return {
             date: entry.dataset.date,
+            tooltip: entry.dataset.tooltip ? entry.dataset.tooltip : null,
             marker: self._calcMarkerDate(entry),
             entries: subEntries.filter(function (element) {
               return self._removeInvalidDiv(element);

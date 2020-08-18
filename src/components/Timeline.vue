@@ -112,7 +112,6 @@
 
     mounted() {
       this._mapMarkers(Array.from(this.$refs["project-content"].childNodes))
-
     },
 
     methods: {
@@ -130,6 +129,7 @@
 
             return {
               date: entry.dataset.date,
+              tooltip: entry.dataset.tooltip ? entry.dataset.tooltip : null,
               marker: self._calcMarkerDate(entry),
               entries: subEntries.filter(element => self._removeInvalidDiv(element)).map(element => self._divToObject(element))
             }
