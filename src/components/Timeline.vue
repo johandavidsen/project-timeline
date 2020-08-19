@@ -145,7 +145,7 @@
         let thisMonth = parseInt(entry.dataset.date.split('-')[1])
         let thisDay = parseInt(entry.dataset.date.split('-')[0])
 
-        let days = ((thisMonth * 30) + thisDay) * day
+        let days = (((thisMonth - 1) * 30) + thisDay) * day
         return ((thisYear - this.years[0].year) * gap) + days
       },
 
