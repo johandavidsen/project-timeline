@@ -1,7 +1,12 @@
 {
   "name": "project-timeline",
+  "description": "",
+  "keywords": [ "vue", "timeline" ],
   "version": "0.3.2",
   "main": "./dist/project-timeline.umd.min.js",
+  "author": "Jóhan Dam-Davidsen <johan@dot.gl> (https://dot.gl)",
+  "license": "MIT",
+  "homepage": "https://github.com/johandavidsen/project-timeline#readme",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name project-timeline ./src/components/Timeline.vue",
