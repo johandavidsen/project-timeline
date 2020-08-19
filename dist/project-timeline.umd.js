@@ -3134,7 +3134,7 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Timeline.vue?vue&type=template&id=6a170962&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5fb1abdf-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Timeline.vue?vue&type=template&id=0d4c987e&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"project-timeline"},[_c('div',{staticClass:"line-cont"},[_c('div',{staticClass:"line"},[_vm._l((_vm.years),function(ref,tkey){
 var year = ref.year;
 var yearGap = ref.yearGap;
@@ -3150,7 +3150,7 @@ return _c('Event',{key:("m-" + mkey),style:({ left:  marker + '%'}),attrs:{"data
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Timeline.vue?vue&type=template&id=6a170962&
+// CONCATENATED MODULE: ./src/components/Timeline.vue?vue&type=template&id=0d4c987e&
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.filter.js
 var es_array_filter = __webpack_require__("4de4");
@@ -3565,7 +3565,7 @@ var component = normalizeComponent(
       var thisYear = parseInt(entry.dataset.date.split('-')[2]);
       var thisMonth = parseInt(entry.dataset.date.split('-')[1]);
       var thisDay = parseInt(entry.dataset.date.split('-')[0]);
-      var days = (thisMonth * 30 + thisDay) * day;
+      var days = ((thisMonth - 1) * 30 + thisDay) * day;
       return (thisYear - this.years[0].year) * gap + days;
     },
     _removeInvalidDiv: function _removeInvalidDiv(entry) {
