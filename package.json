@@ -20,7 +20,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/vue-fontawesome": "^0.1.10",
     "core-js": "^3.6.5",
-    "lg-autoupdate": "^1.0.0",
     "publish-if-version-mismatch": "^0.1.7",
     "vue": "^2.6.12"
   },
