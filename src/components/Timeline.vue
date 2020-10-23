@@ -72,7 +72,7 @@
           year.textMargin = '0px'
         }
 
-        if (index >= 0) {
+        if (index >= 1) {
           year.yearGap = gap * index
           year.textMargin = '-17px'
         }
