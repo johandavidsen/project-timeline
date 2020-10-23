@@ -3,6 +3,7 @@
          tabindex="0"
          data-toggle="tooltip"
          data-placement="top"
+         data-iframe="true"
          v-bind:title="tooltip"
          v-on:focusin="_toggleHover"
          v-on:focusout="_toggleHover"
@@ -26,7 +27,8 @@
     data () {
       return {
         hover: false,
-        tooltip: this.dataEvent.tooltip
+        tooltip: this.dataEvent.tooltip,
+        dynamic: []
       }
     },
 
@@ -35,14 +37,22 @@
         let target = $(this.$refs.h)
         target.tooltip()
       }
+
+      if (this.dataEvent.entries) {
+        for(let i = 0; i < this.dataEvent.entries.length; i++) {
+          let entry = this.dataEvent.entries[i]
+
+          if (entry.src) {
+            this.dynamic.push(entry)
+          }
+        }
+      }
     },
 
     methods: {
 
       _click () {
 
-        //let self = this
-        let dynamic = []
         if (this.dataEvent.entries) {
 
           //  if images
@@ -58,29 +68,34 @@
               }
               return
             }
-
-            if (entry.src) {
-              dynamic.push(entry)
-            }
           }
 
           let options = {
             dynamic: true,
-            dynamicEl: dynamic,
-            hash: false
+            dynamicEl: this.dynamic,
+            hash: false,
+            iframe: true
           }
 
-          // Destroy previous selector if found
-          if ($(this).data('lightGallery')) {
-            $(this).data('lightGallery').destroy(true);
-          }
+          this._activeGallery(options)
 
-          let target = $(this)
-          setTimeout(function()
-          {
-            target.lightGallery(options);
-          }, 250);
         }
+      },
+
+      _activeGallery (options) {
+        // Destroy previous selector if found
+        if ($(this).data('lightGallery')) {
+          $(this).data('lightGallery').destroy(true);
+        }
+
+        let target = $(this)
+
+        target.on('onSlideItemLoad.lg', () => setInterval(this._updateImage, 5000))
+
+        setTimeout(function()
+        {
+          target.lightGallery(options);
+        }, 250);
       },
 
       _toggleHover() {
