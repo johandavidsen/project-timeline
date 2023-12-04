@@ -1,0 +1,37 @@
+- pipeline: "Build, Test and Publish to NPM"
+  events:
+  - type: "PUSH"
+    refs: []
+  fail_on_prepare_env_warning: true
+  trigger_conditions:
+  - trigger_condition: "ALWAYS"
+  actions:
+  - action: "Execute: npm run build"
+    type: "BUILD"
+    working_directory: "/buddy/project-timeline"
+    docker_image_name: "library/node"
+    docker_image_tag: "12"
+    execute_commands:
+    - "# yarn install"
+    - "npm install"
+    - "npm run lint"
+    - "npm run build"
+    cache_base_image: false
+    shell: "BASH"
+    trigger_conditions:
+    - trigger_condition: "ALWAYS"
+  - action: "Execute: npm-cli-login -u '${NPM_LOGIN}' -p '${NPM_PASSWORD}' -e '${NPM_EMAIL}'"
+    type: "BUILD"
+    working_directory: "/buddy/project-timeline"
+    docker_image_name: "library/node"
+    docker_image_tag: "12"
+    execute_commands:
+    - "npm-cli-login -u $NPM_LOGIN -p $NPM_PASSWORD -e $NPM_EMAIL"
+    - "publish-if-version-mismatch"
+    setup_commands:
+    - "npm install -g npm-cli-login publish-if-version-mismatch"
+    - " "
+    cache_base_image: false
+    shell: "BASH"
+    trigger_conditions:
+    - trigger_condition: "ALWAYS"
