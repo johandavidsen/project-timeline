@@ -2,6 +2,13 @@
 
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/johandavidsen/project-timeline?style=flat-square)
 
+## Changelog
+
+### [v0.4.0]() - 2023-12-04
+
+#### Added
+
+- Updated project base from vue-cli to vite.
 
 ## Project Installation
 Assumption is that [VueJS](), [jQuery]() and [lightGallery]() are available in the

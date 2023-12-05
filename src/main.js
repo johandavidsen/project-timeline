@@ -1,14 +1,8 @@
-import Vue from 'vue'
-import Timeline from '@/components/Timeline'
+import { createApp } from 'vue/dist/vue.esm-bundler'
+import TimeLine from '@/components/Time-line.vue'
 
-Vue.config.productionTip = false
-
-let element = document.getElementById("project-timeline-demo")
-if (element) {
-  new Vue({
-    el: "#project-timeline-demo",
-    components: {
-      Timeline
-    },
-  })
+if (document.getElementById("project-timeline-demo")) {
+  const app = createApp({})
+  app.component('TimeLine', TimeLine)
+  app.mount("#project-timeline-demo")
 }
